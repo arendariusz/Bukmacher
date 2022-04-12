@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
+</head>
+<body>
+<header th:fragment="header">
+    <img src="background.jpg" style="width: 100%; height: 200px"/>
+</header>
+<footer th:fragment="footer">
+
+    <a class="bl" href="/">Strona główna</a>
+    <a class="bl" href="/allEvents">Wszystkie zdarzenia</a>
+    <a class="bl" href="/checkYourCoupon">Sprawdź swój zakład</a>
+    <a class="bl" href="/event/add">Dodaj nowy mecz</a>
+
+</footer>
+</body>
+</html>
