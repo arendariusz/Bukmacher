@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+
+</head>
+<body>
+<section layout:fragment="content">
+    <h2 th:text="|${event.name}|"></h2>
+    <p>Dostępne kursy</p>
+    <table class="table table-dark table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Wygrana gospodarzy</th>
+            <th scope="col">Remis</th>
+            <th scope="col">Wygrana gości</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="|${event.getHomeOdd()}|"></td>
+            <td th:text="|${event.getDrawOdd()}|"></td>
+            <td th:text="|${event.getAwayOdd()}|"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a class="bl" th:href="|/event/${event.id}/edit|">Edytuj wynik spotkania</a><br>
+    <a class="bl" th:if="${event.dateTime.isAfter(dateNow)}" th:href="|/bet/${event.id}|">Obstaw!</a>
+    <a class="bl" th:href="|/event/delete/${event.id}|">Usuń mecz</a>
+
+</section>
+</body>
+</html>
