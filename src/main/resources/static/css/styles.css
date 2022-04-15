@@ -1,19 +1,13 @@
-.wrapper {
+.container {
     height: 100vh;
     width: 1000px;
-    margin: auto;
     display: flex;
     flex-direction: column;
     background: #24762d;
 }
 
-header{
-
-}
-
 footer {
     background: #24762d;
-    margin: auto;
 }
 
 .bl {
@@ -23,7 +17,6 @@ footer {
 
 main {
     flex: 1;
-    margin: auto;
 }
 
 a {

@@ -1,6 +1,7 @@
 package com.example.bukmacher;
 
 import com.example.bukmacher.event.Event;
+import com.example.bukmacher.event.EventBet;
 import com.example.bukmacher.event.EventRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,15 +23,22 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
         List<Event> eventList = eventRepository.findAll();
-        model.addAttribute("allEvents", eventList);
+        model.addAttribute("eventList", eventList);
         return "home";
     }
 
     @GetMapping("/eventsToBet")
-    public String allEvents(Model model) {
+    public String eventsToBet(Model model) {
         List<Event> eventList = eventRepository.findEventsByDateTimeIsAfter(LocalDateTime.now());
-        model.addAttribute("allEvents", eventList);
+        model.addAttribute("eventList", eventList);
         return "home";
+    }
+
+    @GetMapping("/popularEvents")
+    public String allEvents(Model model) {
+        List<EventBet> eventList = eventRepository.findMostPopularEvents();
+        model.addAttribute("eventList", eventList);
+        return "mostPopularBets";
     }
 
 }
