@@ -1,0 +1,26 @@
+.container {
+    height: 100vh;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    background: #24762d;
+}
+
+footer {
+    background: #24762d;
+}
+
+.bl {
+    border: 2px solid darkgreen;
+    border-radius: 5px;
+}
+
+main {
+    flex: 1;
+}
+
+a {
+    color: whitesmoke;
+}
+
+

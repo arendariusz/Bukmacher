@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <title>Edytuj wynik meczu</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2 th:text="|${eventToEdit.name}|"></h2>
+    <p>Edytuj wynik</p>
+    <form th:action="|/event/${eventToEdit.id}/edit|" method="post" th:object="${eventToEdit}">
+        <div class="form-group">
+            <label for="homePoints">Ilość goli zdobytych przez gospodarzy</label>
+            <input type="number" class="form-control" id="homePoints" th:field="*{homePoints}">
+        </div>
+        <div class="form-group">
+            <label for="awayPoints">Ilość goli zdobytych przez gospodarzy</label>
+            <input type="number" class="form-control" id="awayPoints" th:field="*{awayPoints}">
+        </div>
+        <button type="submit" class="btn btn-primary">Dodaj wynik!</button>
+    </form>
+
+</section>
+</body>
+</html>

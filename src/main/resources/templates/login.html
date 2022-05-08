@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <title>Rejestracja</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2>logowanie</h2>
+    <p th:if="${showErrorMessage}">Niepoprawne logowanie!</p>
+    <form method="post" th:action="@{/login}">
+        <div class="form-group">
+            <label for="username">Nazwa użytkownika</label>
+            <input type="text" class="form-control" id="username" name="username">
+        </div>
+        <div class="form-group">
+            <label for="password">Hasło</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Zaloguj się</button>
+    </form>
+
+</section>
+</body>
+</html>

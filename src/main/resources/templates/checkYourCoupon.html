@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <title>Obstaw mecz</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2>Sprawdź swój kupon</h2>
+
+    <form action="checkYourCoupon" method="post" th:object="${checkBet}">
+        <div class="form-group">
+            <label for="betId">Wpisz numer swojego zakładu</label>
+            <input type="number" class="form-control" id="betId" th:field="*{id}">
+        </div>
+        <button type="submit" class="btn btn-primary">Sprawdź!</button>
+    </form>
+
+</section>
+</body>
+</html>

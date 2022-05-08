@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+
+</head>
+<body>
+<section layout:fragment="content">
+    <a href="/logout">Wyloguj się</a>
+    <h2>Panel administratora</h2>
+
+    <p th:text="|Użytkownik ${user.username}|"></p>
+
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-dark" th:each="userRole : ${userRoles}">
+            <span th:text="${userRole.role}"></span>
+            <span>   </span>
+            <a th:if="${userRole.role.name() != 'ROLE_USER'}" th:href="|/admin/deleteAdmin/${user.id}|">Usuń rolę
+                admina</a>
+        </li>
+
+    </ul>
+
+    <a th:href="|/admin/addAdminRole/${user.id}|">Dodaj rolę admina</a>
+
+
+</section>
+</body>
+</html>
