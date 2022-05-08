@@ -9,3 +9,14 @@ INSERT INTO bet(id, stake, type, event_id) VALUES
 (3, 40.00, 'AWAY', 3),
 (4, 25.00, 'HOME', 3);
 
+INSERT INTO user(id, username, password) VALUES
+(1, 'darek', '{noop}asdf'),
+(2, 'monika', '{noop}qwer'),
+(3, 'jozek', '{noop}sss');
+
+INSERT INTO user_role(user_id, role) VALUES
+(1, 'ROLE_ADMIN'),
+(2, 'ROLE_USER'),
+(1, 'ROLE_USER'),
+(3, 'ROLE_ADMIN'),
+(3, 'ROLE_USER');
