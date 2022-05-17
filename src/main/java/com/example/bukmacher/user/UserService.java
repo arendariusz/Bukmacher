@@ -16,13 +16,17 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void registerUser(String username, String rawPassword) {
+    public void registerUser(User user) {
         User userToAdd = new User();
-        userToAdd.setUsername(username);
-        String encryptedPassword = passwordEncoder.encode(rawPassword);
+        userToAdd.setUsername(user.getUsername());
+        String encryptedPassword = passwordEncoder.encode(user.getPassword());
         userToAdd.setPassword(encryptedPassword);
         List<UserRole> list = Collections.singletonList(new UserRole(userToAdd, Role.ROLE_USER));
         userToAdd.setRoles(new HashSet<>(list));
+        userToAdd.setName(user.getName());
+        userToAdd.setLastName(user.getLastName());
+        userToAdd.setEmail(user.getEmail());
+
         userRepository.save(userToAdd);
     }
 

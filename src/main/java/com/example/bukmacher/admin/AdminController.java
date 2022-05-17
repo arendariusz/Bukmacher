@@ -43,7 +43,7 @@ public class AdminController {
 
         userService.deleteAdminRoleByUserId(id);
 
-        return "admin";
+        return "redirect:/admin/configureRoles/" + id;
     }
 
     @GetMapping("admin/addAdminRole/{id}")
@@ -51,6 +51,6 @@ public class AdminController {
 
         userService.addAdminRoleByUserId(id);
 
-        return "admin";
+        return "redirect:/admin/configureRoles/" + id;
     }
 }

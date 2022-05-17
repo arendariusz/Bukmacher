@@ -24,7 +24,7 @@
         <tr th:each="event: ${eventList}">
             <th scope="row" th:text="|${event.id}|"></th>
             <td><a th:href="|/event/${event.id}|" th:text="|${event.name}|"></a></td>
-            <td th:text="|${event.dateTime}|"></td>
+            <td th:text="|${#temporals.format(event.dateTime, 'dd MMMM HH:mm')}|"></td>
         </tr>
         </tbody>
     </table>

@@ -2,9 +2,11 @@ package com.example.bukmacher.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.Optional;
 
@@ -24,10 +26,12 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register(User user) {
-        String username = user.getUsername();
-        String rawPassword = user.getPassword();
-        userService.registerUser(username, rawPassword);
+    public String register(Model model, @Valid User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("user", user);
+            return "register";
+        }
+        userService.registerUser(user);
         return "redirect:/registerSucces";
     }
 
@@ -40,7 +44,7 @@ public class UserController {
     @GetMapping("/userPanel")
     public String userPanel(Model model, Principal principal) {
         Optional<User> user = userService.findUserByUsername(principal.getName());
-        model.addAttribute("user", new User());
+        model.addAttribute("user", user.get());
         return "userPanel";
     }
 

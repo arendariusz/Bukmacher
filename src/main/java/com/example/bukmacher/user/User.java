@@ -1,6 +1,10 @@
 package com.example.bukmacher.user;
 
+import com.example.bukmacher.config.CorrectEmail;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -10,14 +14,36 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(min = 3)
     private String username;
+
+    @NotNull
+    @Size(min = 8)
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL, CascadeType.REMOVE}, orphanRemoval = true)
     private Set<UserRole> roles;
 
+    @NotNull
+    @Size(min = 3)
     private String name;
+
+    @NotNull
+    @Size(min = 3)
     private String lastName;
+
+    @NotNull
+    @CorrectEmail
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getName() {
         return name;
