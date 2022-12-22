@@ -8,26 +8,31 @@
 <section layout:fragment="content">
     <h2>Dodaj nowe spotkanie</h2>
 
-    <form action="/event/add" method="post" th:object="${event}">
+    <form action="#" method="post" th:action="@{/event/add}" th:object="${event}">
         <div class="form-group">
             <label for="eventName">Nazwa wydarzenia</label>
             <input type="text" class="form-control" id="eventName" th:field="*{name}">
+            <p th:errors="*{name}"></p>
         </div>
         <div class="form-group">
             <label for="eventDate">Data wydarzenia (np. 2022-02-01 18:30:00)</label>
             <input type="text" class="form-control" id="eventDate" th:field="*{dateTime}">
+            <p th:errors="*{dateTime}"></p>
         </div>
         <div class="form-group">
             <label for="homeOdd">Kurs na wygraną gospodarzy</label>
             <input type="number" step="0.01" class="form-control" id="homeOdd" th:field="*{homeOdd}">
+            <p th:errors="*{homeOdd}"></p>
         </div>
         <div class="form-group">
             <label for="drawOdd">Kurs na remis</label>
             <input type="number" step="0.01" class="form-control" id="drawOdd" th:field="*{drawOdd}">
+            <p th:errors="*{drawOdd}"></p>
         </div>
         <div class="form-group">
             <label for="awayOdd">Kurs na wygraną gości</label>
             <input type="number" step="0.01" class="form-control" id="awayOdd" th:field="*{awayOdd}">
+            <p th:errors="*{awayOdd}"></p>
         </div>
 
         <button type="submit" class="btn btn-primary">Dodaj mecz!</button>

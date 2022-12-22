@@ -67,7 +67,9 @@ public class UserService {
                 user -> {
                     user.setName(user1.getName());
                     user.setLastName(user1.getLastName());
-                    user.setPassword(passwordEncoder.encode(user1.getPassword()));
+                    String encryptedPassword = passwordEncoder.encode(user1.getPassword());
+                    user.setPassword(encryptedPassword);
+                    user.setEmail(user1.getEmail());
                     userRepository.save(user);
                 });
     }

@@ -12,10 +12,12 @@
         <div class="form-group">
             <label for="homePoints">Ilość goli zdobytych przez gospodarzy</label>
             <input type="number" class="form-control" id="homePoints" th:field="*{homePoints}">
+            <p th:errors="*{homePoints}"></p>
         </div>
         <div class="form-group">
             <label for="awayPoints">Ilość goli zdobytych przez gospodarzy</label>
             <input type="number" class="form-control" id="awayPoints" th:field="*{awayPoints}">
+            <p th:errors="*{awayPoints}"></p>
         </div>
         <button type="submit" class="btn btn-primary">Dodaj wynik!</button>
     </form>

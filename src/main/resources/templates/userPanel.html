@@ -13,16 +13,29 @@
 
     <form th:action="@{/userPanel}" method="post" th:object="${user}">
         <div class="form-group">
+            <label for="username"></label>
+            <input type="hidden" class="form-control" id="username" th:field="*{username}">
+            <p th:errors="*{username}"></p>
+        </div>
+        <div class="form-group">
             <label for="name">Imię</label>
             <input type="text" class="form-control" id="name" th:field="*{name}">
+            <p th:errors="*{name}"></p>
         </div>
         <div class="form-group">
             <label for="lastName">Nazwisko</label>
             <input type="text" class="form-control" id="lastName" th:field="*{lastName}">
+            <p th:errors="*{lastName}"></p>
         </div>
         <div class="form-group">
             <label for="password">Hasło</label>
             <input type="password" class="form-control" id="password" th:field="*{password}">
+            <p th:errors="*{password}"></p>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Adres e-mail</label>
+            <input type="text" class="form-control" id="email" th:field="*{email}">
+            <p th:errors="*{email}"></p>
         </div>
         <button type="submit" class="btn btn-primary">Edytuj dane</button>
     </form>

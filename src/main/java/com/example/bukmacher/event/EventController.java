@@ -3,11 +3,14 @@ package com.example.bukmacher.event;
 import com.example.bukmacher.Result;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.thymeleaf.model.IModelVisitor;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -72,7 +75,10 @@ public class EventController {
     }
 
     @PostMapping("event/add")
-    public String addEvent(Event event) {
+    public String addEvent(@Valid @ModelAttribute Event event, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "eventAdd";
+        }
         eventRepository.save(event);
         return "redirect:/event/" + event.getId();
     }
