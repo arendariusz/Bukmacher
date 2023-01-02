@@ -8,25 +8,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.thymeleaf.model.IModelVisitor;
 
 import javax.validation.Valid;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Controller
 public class EventController {
 
-    private EventRepository eventRepository;
+    private EventService eventService;
 
-    public EventController(EventRepository eventRepository) {
-        this.eventRepository = eventRepository;
+    public EventController(EventService eventService) {
+        this.eventService = eventService;
     }
 
     @GetMapping("/event/{id}")
     public String showEvent(@PathVariable Long id, Model model) {
-        Optional<Event> eventOptional = eventRepository.findById(id);
+        Optional<Event> eventOptional = eventService.findById(id);
         model.addAttribute("dateNow", LocalDateTime.now());
         if (eventOptional.isPresent()) {
             Event event = eventOptional.get();
@@ -39,7 +37,7 @@ public class EventController {
 
     @GetMapping("/event/{id}/edit")
     public String showEventEditForm(@PathVariable Long id, Model model) {
-        Optional<Event> eventOptional = eventRepository.findById(id);
+        Optional<Event> eventOptional = eventService.findById(id);
 
         if (eventOptional.isPresent()) {
             Event eventToEdit = eventOptional.get();
@@ -52,7 +50,7 @@ public class EventController {
 
     @PostMapping("/event/{id}/edit")
     public String eventEdit(@PathVariable Long id, Event event) {
-        Event event1 = eventRepository.findById(id).orElseThrow();
+        Event event1 = eventService.findById(id).orElseThrow();
 
         event1.setHomePoints(event.getHomePoints());
         event1.setAwayPoints(event.getAwayPoints());
@@ -64,7 +62,7 @@ public class EventController {
         } else {
             event1.setResult(Result.AWAY);
         }
-        eventRepository.save(event1);
+        eventService.save(event1);
         return "redirect:/event/" + event.getId();
     }
 
@@ -79,13 +77,13 @@ public class EventController {
         if (bindingResult.hasErrors()) {
             return "eventAdd";
         }
-        eventRepository.save(event);
+        eventService.save(event);
         return "redirect:/event/" + event.getId();
     }
 
     @GetMapping("event/delete/{id}")
     public String deleteEvent(@PathVariable Long id) {
-        eventRepository.deleteById(id);
+        eventService.deleteById(id);
         return "redirect:/";
     }
 }

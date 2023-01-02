@@ -19,6 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/background.jpg").permitAll()
                 .antMatchers("/register").permitAll()
                 .antMatchers("/checkYourCoupon").authenticated()
+                .antMatchers("/coupon/**").authenticated()
                 .antMatchers("/bet/**").authenticated()
                 .antMatchers("/userPanel").authenticated()
                 .antMatchers("/admin/**").hasRole("ADMIN")

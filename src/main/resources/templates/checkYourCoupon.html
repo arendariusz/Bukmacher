@@ -8,7 +8,7 @@
 <section layout:fragment="content">
     <h2>Sprawdź swój kupon</h2>
 
-    <form action="checkYourCoupon" method="post" th:object="${checkBet}">
+    <form action="#" method="post" th:action="@{/checkYourCoupon}" th:object="${checkBet}">
         <div class="form-group">
             <label for="betId">Wpisz numer swojego zakładu</label>
             <input type="number" class="form-control" id="betId" th:field="*{id}">

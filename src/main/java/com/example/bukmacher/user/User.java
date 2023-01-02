@@ -1,5 +1,6 @@
 package com.example.bukmacher.user;
 
+import com.example.bukmacher.bet.Bet;
 import com.example.bukmacher.config.CorrectEmail;
 
 import javax.persistence.*;
@@ -24,6 +25,9 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL, CascadeType.REMOVE}, orphanRemoval = true)
     private Set<UserRole> roles;
+
+    @OneToMany(mappedBy ="user", cascade = {CascadeType.ALL})
+    private Set<Bet> bets;
 
     @NotNull
     @Size(min = 3)
@@ -91,5 +95,13 @@ public class User {
 
     public void setRoles(Set<UserRole> roles) {
         this.roles = roles;
+    }
+
+    public Set<Bet> getBets() {
+        return bets;
+    }
+
+    public void setBets(Set<Bet> bets) {
+        this.bets = bets;
     }
 }
