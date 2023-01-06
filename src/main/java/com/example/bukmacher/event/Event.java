@@ -2,13 +2,13 @@ package com.example.bukmacher.event;
 
 import com.example.bukmacher.bet.Bet;
 import com.example.bukmacher.Result;
+import com.example.bukmacher.config.EventValidationGroups;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -17,24 +17,24 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
+    @NotNull(groups = EventValidationGroups.Create.class)
     private String name;
-    @NotNull
-    @FutureOrPresent
+    @NotNull(groups = EventValidationGroups.Create.class)
+    @FutureOrPresent(groups = EventValidationGroups.Create.class)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dateTime;
-    @NotNull
-    @Min(value = 1)
+    @NotNull(groups = EventValidationGroups.Create.class)
+    @Min(value = 1, groups = EventValidationGroups.Create.class)
     private double homeOdd;
     @NotNull
-    @Min(value = 1)
+    @Min(value = 1, groups = EventValidationGroups.Create.class)
     private double drawOdd;
     @NotNull
-    @Min(value = 1)
+    @Min(value = 1, groups = EventValidationGroups.Create.class)
     private double awayOdd;
-    @Min(value = 0)
+    @Min(value = 0, groups = EventValidationGroups.Update.class)
     private Integer homePoints;
-    @Min(value = 0)
+    @Min(value = 0,groups = EventValidationGroups.Create.class)
     private Integer awayPoints;
 
     @Enumerated(EnumType.STRING)
