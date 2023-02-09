@@ -12,9 +12,9 @@
     <p>Lista użytkowników</p>
 
     <ul class="list-group">
-        <li class="list-group-item list-group-item-dark" th:each="user : ${userList}">
-            <span th:text="${user.username}"></span>
-            <span>   </span>
+        <li class="list-group-item list-group-item-dark" th:each="user : ${userList}" id="admin-list">
+            <span>Użytkownik: </span><span th:text="${user.username}"></span>
+            <span> -  </span>
             <a th:href="|/admin/configureRoles/${user.id}|">Konfiguruj role</a>
         </li>
     </ul>

@@ -73,4 +73,10 @@ public class UserService {
                     userRepository.save(user);
                 });
     }
+
+    public boolean hasAdminRole(User user) {
+
+        return user.getRoles().stream().anyMatch(userRole -> userRole.getRole().equals(Role.ROLE_ADMIN));
+
+    }
 }

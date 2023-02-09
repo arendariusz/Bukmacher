@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Set;
@@ -33,8 +32,10 @@ public class AdminController {
     public String configureUserRoles(@PathVariable Long id, Model model) {
         Set<UserRole> userRoles = userService.getUserRoles(id);
         User user = userService.findUserById(id);
+        boolean hasAdminRole = userService.hasAdminRole(user);
         model.addAttribute("userRoles", userRoles);
         model.addAttribute("user", user);
+        model.addAttribute("hasAdminRole", hasAdminRole);
         return "roleConfig";
     }
 

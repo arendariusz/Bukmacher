@@ -1,13 +1,26 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 .container {
-    height: 100%;
-    width: 1000px;
     display: flex;
     flex-direction: column;
+    min-height: 100vh ;
     background: #24762d;
+    color: whitesmoke;
 }
 
 footer {
+    padding: 8px;
+    text-align: center;
     background: #24762d;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style-type: none;
 }
 
 .bl {
@@ -15,12 +28,143 @@ footer {
     border-radius: 5px;
 }
 
-main {
+.main-content {
     flex: 1;
 }
 
 a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+a:hover {
     color: whitesmoke;
 }
 
+#toggle-icon {
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+}
+
+#user-icon {
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+
+}
+
+.menu-item {
+    width: 100%;
+    padding: 16px;
+    border-bottom: 2px solid darkgreen;
+    text-align: center;
+    display: none;
+}
+
+.user-item {
+    width: 100%;
+    padding: 16px;
+    border-bottom: 2px solid darkgreen;
+    text-align: center;
+    display: none;
+}
+
+.event-list-menu {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer-items{
+    padding: 16px;
+    display: flex;
+    justify-content: space-around;
+    color: whitesmoke;
+}
+
+.expanded > .menu-item {
+    display: block;
+}
+
+.expanded > .user-item {
+    display: block;
+}
+
+.menu-toggle {
+    display: block;
+    padding: 16px 32px;
+    font-size: 20px;
+}
+
+.user-toggle {
+    display: block;
+    padding: 16px 32px;
+    font-size: 20px;
+}
+
+@media only screen and (min-width: 992px) {
+
+    .main-content {
+        width: 100%;
+    }
+
+    .navbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        list-style-type: none;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .user-toggle {
+        display: flex;
+        justify-content: center;
+        border: 2px solid darkgreen;
+        border-radius: 5px;
+        height: 59px;
+        color: whitesmoke;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 10px;
+}
+
+    .menu-item {
+        display: block;
+        width: auto;
+        border: 2px solid darkgreen;
+        border-radius: 5px;
+    }
+
+    .event-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .event-list-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 10px;
+        list-style-type: none;
+    }
+    #event-table {
+        text-align: start;
+    }
+
+    #admin-list {
+        background-color: darkgreen;
+        color: whitesmoke;
+    }
+}
 

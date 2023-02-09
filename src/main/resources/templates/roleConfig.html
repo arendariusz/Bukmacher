@@ -12,7 +12,7 @@
     <p th:text="|Użytkownik ${user.username}|"></p>
 
     <ul class="list-group">
-        <li class="list-group-item list-group-item-dark" th:each="userRole : ${userRoles}">
+        <li class="list-group-item list-group-item-dark" th:each="userRole : ${userRoles}" id="admin-list">
             <span th:text="${userRole.role}"></span>
             <span>   </span>
             <a th:if="${userRole.role.name() != 'ROLE_USER'}" th:href="|/admin/deleteAdmin/${user.id}|">Usuń rolę
@@ -21,8 +21,7 @@
 
     </ul>
 
-    <a th:href="|/admin/addAdminRole/${user.id}|">Dodaj rolę admina</a>
-
+    <a th:if="${!hasAdminRole}" th:href="|/admin/addAdminRole/${user.id}|">Dodaj rolę admina</a>
 
 </section>
 </body>

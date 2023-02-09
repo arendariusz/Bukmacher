@@ -43,12 +43,14 @@ public class UserController {
     @GetMapping("/userPanel")
     public String userPanel(Model model, Principal principal) {
         Optional<User> user = userService.findUserByUsername(principal.getName());
+        boolean hasAdminRole = userService.hasAdminRole(user.orElseThrow());
+        model.addAttribute("hasAdminRole", hasAdminRole);
         model.addAttribute("user", user.get());
         return "userPanel";
     }
 
     @PostMapping("/userPanel")
-    public String userUpdate( @Valid User user, BindingResult bindingResult) {
+    public String userUpdate(@Valid User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "userPanel";
         }

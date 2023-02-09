@@ -6,28 +6,30 @@
 </head>
 <body>
 <section layout:fragment="content">
-    <h2>Lista meczów</h2>
+    <div class="event-list">
 
-    <a class="bl" href="/">Wszystkie wydarzenia</a>
-    <a class="bl" href="/popularEvents">Najpopularniejsze mecze</a>
-    <a class="bl" href="/eventsToBet">Mecze do obstawienia</a>
-
-    <table class="table table-dark table-striped">
-        <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nazwa wydarzenia</th>
-            <th scope="col">Data</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="event: ${eventList}">
-            <th scope="row" th:text="|${event.id}|"></th>
-            <td><a th:href="|/event/${event.id}|" th:text="|${event.name}|"></a></td>
-            <td th:text="|${#temporals.format(event.dateTime, 'dd MMMM HH:mm')}|"></td>
-        </tr>
-        </tbody>
-    </table>
+        <ul class="event-list-menu">
+            <li><a class="bl" href="/">Wszystkie wydarzenia</a></li>
+            <li><a class="bl" href="/popularEvents">Najpopularniejsze mecze</a></li>
+            <li><a class="bl" href="/eventsToBet">Mecze do obstawienia</a></li>
+        </ul>
+        <table class="table table-dark table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nazwa wydarzenia</th>
+                <th scope="col">Data</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="event: ${eventList}">
+                <th scope="row" th:text="|${event.id}|"></th>
+                <td><a th:href="|/event/${event.id}|" th:text="|${event.name}|"></a></td>
+                <td th:text="|${#temporals.format(event.dateTime, 'dd MMMM HH:mm')}|"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
 </section>
 </body>

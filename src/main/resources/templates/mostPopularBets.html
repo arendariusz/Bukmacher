@@ -6,30 +6,32 @@
 </head>
 <body>
 <section layout:fragment="content">
-    <h2>Lista meczów</h2>
+    <div class="event-list">
+        <ul class="event-list-menu">
+            <li><a class="bl" href="/">Wszystkie wydarzenia</a></li>
+            <li><a class="bl" href="/popularEvents">Najpopularniejsze mecze</a></li>
+            <li><a class="bl" href="/eventsToBet">Mecze do obstawienia</a></li>
+        </ul>
 
-    <a class="bl" href="/">Wszystkie mecze</a>
-    <a class="bl" href="/popularEvents">Najpopularniejsze mecze</a>
-    <a class="bl" href="/eventsToBet">Mecze do obstawienia</a>
-
-    <table class="table table-dark table-striped">
-        <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nazwa wydarzenia</th>
-            <th scope="col">Data</th>
-            <th scope="col">Ilość kuponów</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="event: ${eventList}">
-            <th scope="row" th:text="|${event.getEventId()}|"></th>
-            <td><a th:href="|/event/${event.getEventId()}|" th:text="|${event.getEventName()}|"></a></td>
-            <td th:text="|${event.getDateTime()}|"></td>
-            <td th:text="|${event.getBetCount()}|"></td>
-        </tr>
-        </tbody>
-    </table>
+        <table class="table table-dark table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nazwa wydarzenia</th>
+                <th scope="col">Data</th>
+                <th scope="col">Ilość kuponów</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="event: ${eventList}">
+                <th scope="row" th:text="|${event.getEventId()}|"></th>
+                <td><a th:href="|/event/${event.getEventId()}|" th:text="|${event.getEventName()}|"></a></td>
+                <td th:text="|${event.getDateTime()}|"></td>
+                <td th:text="|${event.getBetCount()}|"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
 </section>
 </body>

@@ -6,8 +6,10 @@
 </head>
 <body>
 <section layout:fragment="content">
-    <a href="/logout">Wyloguj się</a>
+
     <h2>Panel użytkownika</h2>
+    <a class="bl" href="/logout">Wyloguj się</a>
+    <a class="bl" th:if="${hasAdminRole}" th:href="@{/admin}">Panel administratora</a>
 
     <p th:text="|Witaj ${user.username}|"></p>
 
